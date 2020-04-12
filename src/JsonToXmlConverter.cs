@@ -41,5 +41,16 @@ namespace project {
                 Console.WriteLine(e.Message);
             }
         }
+
+        public override string convert(string jsonString) {
+            try {
+                XDocument xml = XDocument.Parse(JsonConvert.DeserializeXmlNode(jsonString).InnerXml);
+                return xml.ToString();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+            return "";
+        }
     }
 }
