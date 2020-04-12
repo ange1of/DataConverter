@@ -40,5 +40,18 @@ namespace project {
                 Console.WriteLine(e.Message);
             }
         }
+
+        public override string convert(string xmlString) {
+            try {
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(xmlString);
+
+                return JsonConvert.SerializeXmlNode(xmlDocument);
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+            return "";
+        }
     }
 }
