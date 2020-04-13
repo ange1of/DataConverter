@@ -8,6 +8,8 @@ namespace project {
     public abstract class DataConverter {
         public abstract void convert(string sourcePath, string targetPath);
 
+        public abstract string convert(string objectToConvert);
+
         public static void dumpObjectToJsonFile(Object obj, string targetFilePath) {
             string fullTargetFilePath = Path.GetFullPath(targetFilePath);
             if (!Directory.Exists(Path.GetDirectoryName(fullTargetFilePath))) {
