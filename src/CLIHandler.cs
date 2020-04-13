@@ -7,6 +7,7 @@ namespace project {
             Console.WriteLine(@"Possible options (order of arguments is important):
     --convert-file --from <json|xml> --to <xml|json> --source <filepath> --target <filepath>
     --convert-string --from <json|xml> --to <xml|json> <string>
+    --validate --type <xml|json> <string>
     --help");
         }
 
@@ -55,6 +56,30 @@ namespace project {
             }
             else {
                 Console.WriteLine("Wrong arguments fromat");
+            }
+        }
+
+        public static void handleValidation(string[] args) {
+            if (args.Length < 4) {
+                Console.WriteLine("Not enough arguments");
+                return;
+            }
+
+            if (args[1] == "type") {
+                if (args[2] == "json") {
+                    JsonValidator validator = new JsonValidator();
+                    Console.WriteLine(validator.validate(args[3]));
+                }
+                else if (args[2] == "xml") {
+                    XmlValidator validator = new XmlValidator();
+                    Console.WriteLine(validator.validate(args[3]));
+                }
+                else {
+                    Console.WriteLine("Invalid validation format");
+                }
+            }
+            else {
+                Console.WriteLine("Cannot identify 'type' parameter");
             }
         }
     }
