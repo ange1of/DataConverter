@@ -1,0 +1,3 @@
+[submodule "TacticGame"]
+	path = TacticGame
+	url = https://github.com/ange1of/TacticGame
