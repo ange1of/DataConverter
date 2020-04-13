@@ -5,8 +5,26 @@ namespace project
     class Program
     {
         static void Main(string[] args) {
-            // XmlToJsonConverter converter = new XmlToJsonConverter();
-            // converter.convert("test.xml", "test.json");
+            if (args.Length < 1) {
+                Console.WriteLine("Not enough arguments");
+                return;
+            }
+
+            switch (args[0]) {
+                case "--help":
+                    CLIHandler.showHelp();
+                    break;
+                case "--convert-string":
+                    CLIHandler.handleStringConversion(args);
+                    break;
+                case "--convert-file":
+                    CLIHandler.handleFileConversion(args);
+                    break;
+                default:
+                    Console.WriteLine("Unknown arguments format");
+                    break;
+            }
+
         }
     }
 }
