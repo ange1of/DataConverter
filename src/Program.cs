@@ -20,6 +20,9 @@ namespace project
                 case "--convert-file":
                     CLIHandler.handleFileConversion(args);
                     break;
+                case "--validate":
+                    CLIHandler.handleValidation(args);
+                    break;
                 default:
                     Console.WriteLine("Unknown arguments format");
                     break;
