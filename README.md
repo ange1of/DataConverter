@@ -9,3 +9,5 @@
     `src.exe --convert-string --from <json|xml> --to <xml|json> <string>`
     
     `src.exe --help`
+
+    `src.exe --validate --type <xml|json> <string>`
