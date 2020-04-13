@@ -5,6 +5,7 @@ namespace project
     class Program
     {
         static void Main(string[] args) {
+            //
             if (args.Length < 1) {
                 Console.WriteLine("Not enough arguments");
                 return;
@@ -27,7 +28,6 @@ namespace project
                     Console.WriteLine("Unknown arguments format");
                     break;
             }
-
         }
     }
 }

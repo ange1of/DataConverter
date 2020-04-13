@@ -6,6 +6,11 @@ using System.Xml.Serialization;
 namespace project {
 
     public abstract class DataConverter {
+        /// <summary>
+        /// Abstract method, that converts files from xml to json or from json to xml
+        /// </summary>
+        /// <param name="sourcePath">Source file path</param>
+        /// <param name="targetPath">Target file path</param>
         public abstract void convert(string sourcePath, string targetPath);
 
         public abstract string convert(string objectToConvert);
