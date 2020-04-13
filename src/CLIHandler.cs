@@ -5,9 +5,9 @@ namespace project {
     public static class CLIHandler {
         public static void showHelp() {
             Console.WriteLine(@"Possible options (order of arguments is important):
-            --convert-file --from <json|xml> --to <xml|json> --source <filepath> --target <filepath>
-            --convert-string --from <json|xml> --to <xml|json> <string>
-            --help - show this message");
+    --convert-file --from <json|xml> --to <xml|json> --source <filepath> --target <filepath>
+    --convert-string --from <json|xml> --to <xml|json> <string>
+    --help");
         }
 
         public static void handleStringConversion(string[] args) {
@@ -35,7 +35,27 @@ namespace project {
         }
 
         public static void handleFileConversion(string[] args) {
+            if (args.Length < 9) {
+                Console.WriteLine("Not enough arguments");
+                return;
+            }
 
+            if (args[1] == "--from" && args[3] == "--to" && args[5] == "--source" && args[7] == "--target") {
+                if (args[2] == "json" && args[4] == "xml") {
+                    JsonToXmlConverter converter = new JsonToXmlConverter();
+                    converter.convert(args[6], args[8]);
+                }
+                else if (args[2] == "xml" && args[4] == "json") {
+                    XmlToJsonConverter converter = new XmlToJsonConverter();
+                    converter.convert(args[6], args[8]);
+                }
+                else {
+                    Console.WriteLine("Invalid conversion formats");
+                }
+            }
+            else {
+                Console.WriteLine("Wrong arguments fromat");
+            }
         }
     }
 
